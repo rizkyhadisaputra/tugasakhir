@@ -115,40 +115,89 @@ session_start();
 
     <!-- MAIN -->
     
+    <?php
+
+function http_request($url){
+    // persiapkan curl
+    $ch = curl_init(); 
+
+    // set url 
+    curl_setopt($ch, CURLOPT_URL, $url);
+    
+    // set user agent    
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+
+    // return the transfer as a string 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+
+    // $output contains the output string 
+    $output = curl_exec($ch); 
+
+    // tutup curl 
+    curl_close($ch);      
+
+    // mengembalikan hasil curl
+    return $output;
+}
+
+$profile = http_request("https://api.kawalcorona.com/positif/");
+$profile2 = http_request("https://api.kawalcorona.com/meninggal/");
+$profile3 = http_request("https://api.kawalcorona.com/sembuh/");
+$profile4 = http_request("https://api.kawalcorona.com/indonesia/");
+
+
+
+// ubah string JSON menjadi array
+$profile = json_decode($profile, TRUE);
+$profile2 = json_decode($profile2, TRUE);
+$profile3 = json_decode($profile3, TRUE);
+$profile4 = json_decode($profile4, TRUE);
+
+?>
+
     <div class="site-section stats">
       <div class="container">
         <div class="row mb-3">
           <div class="col-lg-7 text-center mx-auto">
             <h2 class="section-heading">Coronavirus Statistics</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, voluptate!</p>
+            <p>Coronavirus Global & Indonesia Live Data</p>
           </div>
         </div>
         <div class="row"> 
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <span class="flaticon-virus"></span>
               </span>
-              <strong class="d-block number">14,112,077</strong>
+              <strong class="d-block number"><?php echo $profile ["value"] ?></strong>
               <span class="label">Active Cases</span>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <span class="flaticon-virus"></span>
               </span>
-              <strong class="d-block number">595,685</strong>
+              <strong class="d-block number"><?php echo $profile2 ["value"] ?></strong>
               <span class="label">Deaths</span>
             </div>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="data">
               <span class="icon text-primary">
                 <span class="flaticon-virus"></span>
               </span>
-              <strong class="d-block number">8,397,665</strong>
+              <strong class="d-block number"><?php echo $profile3 ["value"] ?></strong>
               <span class="label">Recovered Cases</span>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="data">
+              <span class="icon text-primary">
+                <span class="flaticon-virus"></span>
+              </span>
+              <strong class="d-block number"><?php echo $profile4 ["sembuh"] ?></strong>
+              <span class="label">Indonesia</span>
             </div>
           </div>
         </div>
