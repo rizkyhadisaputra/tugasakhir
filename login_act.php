@@ -1,9 +1,9 @@
 <?php
 session_start();
 include 'koneksi.php';
-$username=$_POST['username'];
-$password=$_POST['password'];
 
+$username=$_POST['username'];
+$password=md5($_POST['password']);
 $query=mysqli_query($connection,"select * from user where username='$username' and password='$password'");
 $p=mysqli_fetch_array($query);
 
@@ -24,7 +24,5 @@ if (mysqli_num_rows($query)==1) {
         //window.location = "login.php";
     //</script>';
 }
-
-
 
 ?>

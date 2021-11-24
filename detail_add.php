@@ -18,6 +18,6 @@ $id = $_POST['id'];
     $_SESSION["sukses"] = 'Data Berhasil Disimpan';
 
 // mengalihkan halaman kembali ke index.php
-    header("location:monitoring.php?pesan=tambah");
+    header('location: monitoring.php?pesan=tambah');
  
 ?>
