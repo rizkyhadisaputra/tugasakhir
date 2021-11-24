@@ -3,10 +3,11 @@
 session_start();
     include 'cek.php';
     include 'koneksi.php';
+    include 'navbar.php';
     ?>
 
 
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
   <title>Covid &mdash; Website Template by Colorlib</title>
@@ -86,7 +87,7 @@ session_start();
         </div>
       </div>
 
-    </header>
+    </header> -->
 
     
 

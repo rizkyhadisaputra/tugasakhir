@@ -1,8 +1,10 @@
 <?php
 include "koneksi.php";
+include "navbar.php";
+session_start();
 ?>
 
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -83,7 +85,7 @@ include "koneksi.php";
         </div>
       </div>
 
-    </header>
+    </header> -->
 
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 

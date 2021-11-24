@@ -2,8 +2,7 @@
 if (!isset($_SESSION['kunci'])) 
 {
     # code...
-    header("location:login.php");
+    header( 'location: login.php' );
 }
-
 
 ?>
