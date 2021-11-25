@@ -259,7 +259,7 @@ session_start();
       </div>
 
 
-      <script src="js/jquery-3.3.1.min.js"></script>
+      <!-- <script src="js/jquery-3.3.1.min.js"></script>
       <script src="js/jquery-ui.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -269,10 +269,10 @@ session_start();
       <script src="js/aos.js"></script>
       <script src="js/jquery.fancybox.min.js"></script>
       <script src="js/jquery.sticky.js"></script>
-      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
       
-      <script src="js/main.js"></script>
+      <!-- <script src="js/main.js"></script> -->
 
       <script type="text/javascript">
         //Hapus Data

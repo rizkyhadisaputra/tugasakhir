@@ -602,7 +602,7 @@ $profile4 = json_decode($profile4, TRUE);
 
   </div> <!-- .site-wrap -->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
+  <!-- <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -615,7 +615,7 @@ $profile4 = json_decode($profile4, TRUE);
   <script src="js/isotope.pkgd.min.js"></script>
 
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js"></script> -->
 
 
 </body>
