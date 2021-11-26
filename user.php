@@ -109,7 +109,7 @@ session_start();
             </div>
           </div>
 
-          <!-- Modal -->
+          <!-- Modal
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -146,7 +146,7 @@ session_start();
                 </form>
               </div>
             </div>
-          </div>
+          </div> -->
           <br>
 
           <div class="row text-center">
@@ -178,7 +178,7 @@ session_start();
                     <td><?php echo $view["role"] ?></td>
                     <td>
                       <a href="edit.php" class="btn btn-warning btn-sm">EDIT</a>
-                      <a class="btn btn-danger btn-sm" data-toggle='modal' data-target='#konfirmasi_hapus' data-href="hapus_keluarga.php?id=<?php echo $view['id']; ?>">DELETE</a>
+                      <a class="btn btn-danger btn-sm" data-toggle='modal' data-target='#konfirmasi_hapus' data-href="hapus_user.php?id=<?php echo $view['id']; ?>">DELETE</a>
                     </td>
                   </tr>
                 <?php
@@ -209,7 +209,7 @@ session_start();
       </div>
 
 
-      <script src="js/jquery-3.3.1.min.js"></script>
+      <!-- <script src="js/jquery-3.3.1.min.js"></script>
       <script src="js/jquery-ui.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -219,9 +219,9 @@ session_start();
       <script src="js/aos.js"></script>
       <script src="js/jquery.fancybox.min.js"></script>
       <script src="js/jquery.sticky.js"></script>
-      <script src="js/isotope.pkgd.min.js"></script>
+      <script src="js/isotope.pkgd.min.js"></script> -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
-      <script src="js/main.js"></script>
+      <!-- <script src="js/main.js"></script> -->
       <script type="text/javascript">
         //Hapus Data
         $(document).ready(function() {

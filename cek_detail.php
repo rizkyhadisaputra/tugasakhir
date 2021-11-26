@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
 session_start();
+$sql = "DELETE FROM sensor";
+mysqli_query($connection, $sql);
 ?>
 
 <!DOCTYPE html>

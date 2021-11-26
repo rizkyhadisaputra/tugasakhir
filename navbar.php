@@ -56,6 +56,7 @@ session_start();
       <div class="site-mobile-menu-body"></div>
     </div>
 
+ 
     
     <header class="site-navbar light js-sticky-header site-navbar-target" role="banner">
 
@@ -69,13 +70,31 @@ session_start();
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="index.php" class="nav-link">Home</a></li>
-                <li><a href="keluarga.php" class="nav-link">Keluarga</a></li>
-                <li><a href="monitoring.php" class="nav-link">Monitoring</a></li>
-                <li><a href="user.php" class="nav-link">User</a></li>
-                <li><a href="logout.php" class="nav-link">Log out</a></li>
-              </ul>
+                  <?php if ($_SESSION['ases']=='master')
+                  {
+                      ?>
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li class="active"><a href="index.php" class="nav-link">Home</a></li>
+                            <li><a href="keluarga.php" class="nav-link">Keluarga</a></li>
+                            <li><a href="monitoring.php" class="nav-link">Monitoring</a></li>
+                            <li><a href="user.php" class="nav-link">User</a></li>
+                            <li><a href="logout.php" class="nav-link">Log out</a></li>
+                          </ul>
+                              
+                    <?php       }
+                    
+                    if ($_SESSION['ases']=='keluarga') {?>
+                      <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li class="active"><a href="index.php" class="nav-link">Home</a></li>
+                            <li><a href="keluarga.php" class="nav-link">Keluarga</a></li>
+                            <li><a href="monitoring.php" class="nav-link">Monitoring</a></li>
+                            <!-- <li><a href="user.php" class="nav-link">User</a></li> -->
+                            <li><a href="logout.php" class="nav-link">Log out</a></li>
+                          </ul>
+                    
+                    <?php } ?>
+
+              
             </nav>
           </div>
 
