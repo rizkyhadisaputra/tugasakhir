@@ -109,7 +109,7 @@ session_start();
             </div>
           </div>
 
-          <!-- Modal
+          <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -119,23 +119,23 @@ session_start();
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form action="keluarga_add.php" method="POST">
+                <form action="user_add_act.php" method="POST">
                   <div class="modal-body">
                     <div class="form-group">
                       <label>Username</label>
-                      <input type="text" name="Username" class="form-control" placeholder="Username">
+                      <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
 
                     <div class="form-group">
-                      <label>Umur</label>
-                      <input type="text" name="umur" class="form-control" placeholder="Umur">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                     </div>
 
                     <div class="form-group">
                       <label>Role</label>
                       <select class="form-control" name="role" aria-label="Default select example">
-                        <option value="User">User</option>
-                        <option value="Dokter">Dokter</option>
+                        <option value="master">master</option>
+                        <option value="keluarga">keluarga</option>
                       </select>
                     </div>
                   </div>
@@ -146,7 +146,7 @@ session_start();
                 </form>
               </div>
             </div>
-          </div> -->
+          </div>
           <br>
 
           <div class="row text-center">
