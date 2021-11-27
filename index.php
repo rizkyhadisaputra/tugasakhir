@@ -11,13 +11,12 @@ session_start();
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 mr-auto text-center text-lg-left">
+            <span class="d-block subheading">Kamu Login Sebagai <?php echo $_SESSION['ases']; ?></span>
             <span class="d-block subheading">Covid-19 Awareness</span>
             <h1 class="heading mb-3">Stay Safe. Stay Home.</h1>
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel a, nulla incidunt eaque sit praesentium porro consectetur optio!</p>
-            <p class="mb-4"><a href="#" class="btn btn-primary">How to prevent</a></p>
-
-
-
+            
+            <!-- <p class="mb-4"><a href="#" class="btn btn-primary">How to prevent</a></p> -->
           </div>
           <div class="col-lg-6">
             <figure class="illustration">
@@ -130,7 +129,7 @@ $profile4 = json_decode($profile4, TRUE);
               <img src="images/hero_1.jpg" alt="Image" class="img-fluid">
               <div class="absolute-block d-flex">
                 <span class="text">Watch the Video</span>
-                <a href="https://www.youtube.com/watch?v=9pVy8sRC440" data-fancybox class="btn-play">
+                <a href="https://youtu.be/D9tTi-CDjDU" data-fancybox class="btn-play">
                   <span class="icon-play"></span>
                 </a>
               </div>
@@ -138,13 +137,15 @@ $profile4 = json_decode($profile4, TRUE);
           </div>
           <div class="col-lg-5 ml-auto">
             <h2 class="mb-4 section-heading">What is Coronavirus?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex officia quas, modi sit eligendi numquam!</p>
+            <p>kumpulan virus yang menginfeksi sistem pernapasan. Pada banyak kasus, virus ini hanya menyebabkan infeksi pernapasan ringan, seperti flu. Namun, 
+              virus ini juga bisa menyebabkan infeksi pernapasan berat, seperti infeksi paru-paru (pneumonia).
+              Secara umum, ada tiga gejala umum yang bisa menandakan seseorang terinfeksi virus Corona, yaitu:</p>
             <ul class="list-check list-unstyled mb-5">
-              <li>Lorem ipsum dolor sit amet</li>
-              <li>Consectetur adipisicing elit</li>
-              <li>Unde doloremque</li>
+              <li>Demam (suhu tubuh di atas 38 derajat Celsius</li>
+              <li>Batuk kering</li>
+              <li>Sesak napas</li>
             </ul>
-            <p><a href="#" class="btn btn-primary">Learn more</a></p>
+            <p><a href="https://www.alodokter.com/virus-corona" class="btn btn-primary">Learn more</a></p>
           </div>
         </div>
       </div>
@@ -374,7 +375,7 @@ $profile4 = json_decode($profile4, TRUE);
 
               <div class="col-lg-8 mb-4 mb-lg-0"><strong>Stay at home and call your doctor:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, eaque.</div>
               <div class="col-lg-4 text-lg-right">
-                <a href="#" class="btn btn-primary"><span class="icon-phone mr-2 mt-3"></span>Help line</a>
+                <a href="https://www.halodoc.com/" class="btn btn-primary"><span class="icon-phone mr-2 mt-3"></span>Help line</a>
               </div>
             </div>
           </div>
@@ -383,7 +384,7 @@ $profile4 = json_decode($profile4, TRUE);
     </div>
 
 
-    <div class="site-section">
+    <!-- <div class="site-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-7 mx-auto text-center">
@@ -452,7 +453,7 @@ $profile4 = json_decode($profile4, TRUE);
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="site-footer">
       <div class="container">
