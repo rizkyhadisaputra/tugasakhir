@@ -122,9 +122,22 @@ session_start();
 
               <div class="tbody">
                 <?php
-                $no = 1;
-                $data = mysqli_query($connection, "select * from keluarga");
-                while ($view = mysqli_fetch_array($data)) {
+
+                  $batas = 10;
+                  $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                  $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+                  $previous = $halaman - 1;
+                  $next = $halaman + 1;
+
+                  $data = mysqli_query($connection, "select * from keluarga");
+                  $jumlah_data = mysqli_num_rows($data);
+				          $total_halaman = ceil($jumlah_data / $batas);
+
+                
+                $data_keluarga = mysqli_query($connection, "select * from keluarga limit $halaman_awal, $batas");
+                $no = $halaman_awal+1;
+                while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
@@ -147,9 +160,21 @@ session_start();
               if ($_SESSION['ases']=='keluarga') {?>
                   <div class="tbody">
                 <?php
-                $no = 1;
+                $batas = 10;
+                $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+                $previous = $halaman - 1;
+                $next = $halaman + 1;
+
                 $data = mysqli_query($connection, "select * from keluarga");
-                while ($view = mysqli_fetch_array($data)) {
+                $jumlah_data = mysqli_num_rows($data);
+                $total_halaman = ceil($jumlah_data / $batas);
+
+              
+              $data_keluarga = mysqli_query($connection, "select * from keluarga limit $halaman_awal, $batas");
+              $no = $halaman_awal+1;
+              while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
@@ -171,6 +196,23 @@ session_start();
             </div>
           </div>
           </table>
+
+          <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?> >Previous</a>
+    </li>
+    <?php 
+				for($x=1;$x<=$total_halaman;$x++){
+					?> 
+					<li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+					<?php
+				}
+				?>				
+      <a class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+    </li>
+  </ul>
+</nav>
           </div>
 
   
