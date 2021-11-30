@@ -18,7 +18,7 @@ session_start();
             </div>
           </div>
 
-        <?php if ($_SESSION['ases']=='master')
+        <?php if ($_SESSION['ases']=='master' or $_SESSION['ases']=='admin')
         {
             ?>
 
@@ -60,7 +60,17 @@ session_start();
                         <option value="Perempuan">Perempuan</option>
                       </select>
                     </div>
+                    
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" name="username" class="form-control" placeholder="Username">
+                    </div>
 
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    
                     
                   </div>
                   <div class="modal-footer">
@@ -129,13 +139,14 @@ session_start();
 
                   $previous = $halaman - 1;
                   $next = $halaman + 1;
-
+                  
+                  $keluarga_id =  $_SESSION['keluarga_id'];
                   $data = mysqli_query($connection, "select * from keluarga");
                   $jumlah_data = mysqli_num_rows($data);
 				          $total_halaman = ceil($jumlah_data / $batas);
 
                 
-                $data_keluarga = mysqli_query($connection, "select * from keluarga limit $halaman_awal, $batas");
+                $data_keluarga = mysqli_query($connection, "select * from keluarga  limit $halaman_awal, $batas");
                 $no = $halaman_awal+1;
                 while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>
@@ -157,6 +168,46 @@ session_start();
               </div>
 
               <?php       }
+              if ($_SESSION['ases']=='admin') {?>
+
+              <div class="tbody">
+                <?php
+
+                  $batas = 10;
+                  $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+                  $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+                  $previous = $halaman - 1;
+                  $next = $halaman + 1;
+                  
+                  $created_by =  $_SESSION['created_by'];
+
+                  $data = mysqli_query($connection, "select * from keluarga where created_by=$created_by");
+                  $jumlah_data = mysqli_num_rows($data);
+				          $total_halaman = ceil($jumlah_data / $batas);
+
+                
+                $data_keluarga = mysqli_query($connection, "select * from keluarga where created_by=$created_by limit $halaman_awal, $batas");
+                $no = $halaman_awal+1;
+                while ($view = mysqli_fetch_array($data_keluarga)) {
+                ?>
+                  <tr>
+                    <td><?php echo $no++ ?></td>
+                    <td><?php echo $view["nama"] ?></td>
+                    <td><?php echo $view["umur"] ?></td>
+                    <td><?php echo $view["gender"] ?></td>
+                    <?php echo "<td class='text-center'><a href='#edit_modal' class='btn btn-warning btn-show-modal-edit'  data-toggle='modal' data-id=".$view['id'].">Edit</a>"; ?>
+                      <a class="btn btn-danger" data-toggle='modal' data-target='#konfirmasi_hapus' data-href="hapus_keluarga.php?id=<?php echo $view['id']; ?>">DELETE</a>
+                      <a href="cek_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">CEK</a>
+                      <a href="hasil_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">Detail</a>
+                    </td>
+                  </tr>
+                <?php
+                }
+                ?>
+
+              </div>
+              <?php       }
               if ($_SESSION['ases']=='keluarga') {?>
                   <div class="tbody">
                 <?php
@@ -166,13 +217,15 @@ session_start();
 
                 $previous = $halaman - 1;
                 $next = $halaman + 1;
+                $created_by =  $_SESSION['created_by'];
 
-                $data = mysqli_query($connection, "select * from keluarga");
+                $data = mysqli_query($connection, "select * from keluarga where created_by=$created_by");
                 $jumlah_data = mysqli_num_rows($data);
                 $total_halaman = ceil($jumlah_data / $batas);
 
               
-              $data_keluarga = mysqli_query($connection, "select * from keluarga limit $halaman_awal, $batas");
+
+              $data_keluarga = mysqli_query($connection, "select * from keluarga where created_by=$created_by limit $halaman_awal, $batas");
               $no = $halaman_awal+1;
               while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>

@@ -70,7 +70,7 @@ session_start();
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
-                  <?php if ($_SESSION['ases']=='master')
+                  <?php if ($_SESSION['ases']=='master'or $_SESSION['ases']=='admin')
                   {
                       ?>
                             <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">

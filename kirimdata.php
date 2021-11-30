@@ -21,6 +21,7 @@ $simpan = mysqli_query($connection, "INSERT INTO  sensor(saturasi)VALUES('$satur
 
     if($simpan)
         echo "Berhasil disimpan";
+        
     else
         echo "Gagal Tersimpan";
 

@@ -90,6 +90,23 @@
                 <div class="card-body">
 
                     <form action="register_act.php" method="POST">
+                    <div class="form-group">
+                      <label>Nama</label>
+                      <input type="text" name="nama" class="form-control" placeholder="Nama">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Umur</label>
+                      <input type="text" name="umur" class="form-control" placeholder="Umur">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Gender</label>
+                      <select class="form-control" name="gender" aria-label="Default select example">
+                        <option value="Laki-laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                    </div>
 
                         <label class="form-label">Username</label>
                         <input type="text" name="username" class="form-control">
@@ -102,7 +119,7 @@
                         <input type="text" name="role" class="form-control">
 
                         <br>
-                        <button type="submit" value="register" class="btn btn-primary">Register</button>
+                        <button type="submit" name="register" class="btn btn-primary">Register</button>
                     </form>
                 </div>
             </div>
