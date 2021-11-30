@@ -2,4 +2,4 @@
 deployment:
 tasks:
 - export DEPLOYPATH=/home/mony4482/public_html/git
-- /bin/cp -R * $DEPLOYPATH
+- /bin/cp -r * $DEPLOYPATH
