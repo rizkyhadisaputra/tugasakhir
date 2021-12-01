@@ -74,22 +74,22 @@ session_start();
           </div>
         </table>
 
-        <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?> >Previous</a>
-    </li>
-    <?php 
-				for($x=1;$x<=$total_halaman;$x++){
-					?> 
-					<li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
-					<?php
-				}
-				?>				
-      <a class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
-    </li>
-  </ul>
-</nav>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$Previous'"; } ?> >Previous</a>
+              </li>
+              <?php 
+                  for($x=1;$x<=$total_halaman;$x++){
+                    ?> 
+                    <li class="page-item"><a class="page-link" href="?halaman=<?php echo $x ?>"><?php echo $x; ?></a></li>
+                    <?php
+                  }
+                  ?>				
+                <a class="page-link" <?php if($halaman < $total_halaman) { echo "href='?halaman=$next'"; } ?>>Next</a>
+              </li>
+            </ul>
+          </nav>
 
           <br>
 

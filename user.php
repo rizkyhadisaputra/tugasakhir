@@ -17,53 +17,10 @@ session_start();
               <h2 class="section-heading">DATA USER</h2>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col-12">
-              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
-            </div>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Tambah Data Keluarga</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <form action="user_add_act.php" method="POST">
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label>Username</label>
-                      <input type="text" name="username" class="form-control" placeholder="Username">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Role</label>
-                      <select class="form-control" name="role" aria-label="Default select example">
-                        <option value="master">master</option>
-                        <option value="keluarga">keluarga</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" name="add_data" class="btn btn-primary">SAVE</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+         
           <br>
-
+    <?php if ($_SESSION['ases']=='master')
+            {?>
           <div class="row text-center">
             <div class="col-md-12">
               <div class="container text-center">
@@ -79,6 +36,7 @@ session_start();
                 </tr>
               </thead>
 
+            
               <div class="tbody">
                 <?php
                 $no = 1;
@@ -101,8 +59,47 @@ session_start();
                 ?>
 
               </div>
+              <?php       }
+            if ($_SESSION['ases']=='admin')
+            
+            {?>
 
+          <div class="row text-center">
+            <div class="col-md-12">
+              <div class="container text-center">
+                <table class="table table-bordered table-responsive-md text-center">
+              </div>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Password</th>
+                  <th scope="col">Role</th>
+                  
+                </tr>
+              </thead>
 
+              <div class="tbody">
+                <?php
+                $no = 1;
+                $data = mysqli_query($connection, "select * from user");
+                while ($view = mysqli_fetch_array($data)) {
+
+                ?>
+                  <tr>
+                    <td><?php echo $no++ ?></td>
+                    <td><?php echo $view["username"] ?></td>
+                    <td><?php echo $view["password"] ?></td>
+                    <td><?php echo $view["role"] ?></td>
+                    
+                  </tr>
+                <?php
+                }
+                ?>
+
+              </div>
+              
+             <?php } ?> 
             </div>
           </div>
           </table>
