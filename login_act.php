@@ -18,6 +18,7 @@ if (mysqli_num_rows($query)==1) {
     $_SESSION['user_id']=$p['id'];
     $_SESSION['created_by']=$p['created_by'];
     //var_dump ($_SESSION['kunci']);
+    $_SESSION['status'] = "Sukses Login";
      header( 'Location: index.php' );
      //echo '<script type="text/javascript">
         //window.location = "index.php";
