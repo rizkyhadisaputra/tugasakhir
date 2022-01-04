@@ -23,13 +23,52 @@ session_start();
             ?>
 
     <div class="row">
-            <div class="col-12">
+            <div class="col-sm-8">
               <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Tambah Data</button>
+            </div>
+
+            <div class="col-sm-4">
+              <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModa2">Tambah Dokter</button>
             </div>
           </div>
       
         <?php } ?>
           
+
+          <!-- Modal ADD DATA-->
+          <div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Tambah Dokter</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="dokter_add.php" method="POST">
+                  <div class="modal-body">
+                    
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" name="username" class="form-control" placeholder="Username">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="add_data" class="btn btn-primary">SAVE</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
 
                <!-- Modal ADD DATA-->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -245,7 +284,44 @@ session_start();
                 ?>
 
               </div>
-              <?php } ?>     
+              <?php } 
+              
+              if ($_SESSION['ases']=='dokter') {?>
+                <div class="tbody">
+              <?php
+              $batas = 10;
+              $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+              $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+              $previous = $halaman - 1;
+              $next = $halaman + 1;
+              $created_by =  $_SESSION['created_by_user'];
+
+              $data = mysqli_query($connection, "select * from keluarga where created_by=$created_by");
+              $jumlah_data = mysqli_num_rows($data);
+              $total_halaman = ceil($jumlah_data / $batas);
+
+            
+
+            $data_keluarga = mysqli_query($connection, "select * from keluarga where created_by=$created_by limit $halaman_awal, $batas");
+            $no = $halaman_awal+1;
+            while ($view = mysqli_fetch_array($data_keluarga)) {
+              ?>
+                <tr>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $view["nama"] ?></td>
+                  <td><?php echo $view["umur"] ?></td>
+                  <td><?php echo $view["gender"] ?></td>
+                  <td><a href="hasil_detail.php?id=<?php  echo $view["id"]?>&nama=<?php echo $view["nama"]?>" class="btn btn-info btn-sm">Detail</a>
+                  </td>
+                </tr>
+              <?php
+              }
+              ?>
+
+            </div>
+              
+            <?php   }  ?>
             </div>
           </div>
           </table>

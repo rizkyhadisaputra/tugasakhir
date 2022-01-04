@@ -84,7 +84,16 @@ $chartQueryRecords   = mysqli_query($connection, $sql);
         <p>
             Data yang Ditampilkan Secara keseluruhan
         </p>
+        <?php echo $_GET['nama']; ?>
     </div>
+
+    <!-- <div class="container">
+        <div class="row">
+        <div class="col-12">
+           
+            </div>
+        </div>
+    </div> -->
 
     <div class="container align-center">
         <div class="row text-center">
