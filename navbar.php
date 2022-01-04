@@ -100,8 +100,8 @@ session_start();
                             <li class="active"><a href="index.php" class="nav-link">Home</a></li>
                             <li><a href="keluarga.php" class="nav-link">Keluarga</a></li>
                             <li><a href="monitoring.php" class="nav-link">Monitoring</a></li>
-                            <!-- <li><a href="user.php" class="nav-link">User</a></li> -->
                             <li><a href="logout.php" class="nav-link">Log out </a></li>
+                            <li><p class="nav-link">hy <?php echo $_SESSION['kunci']; ?></p></li>
                     
                 
                 <?php } ?> 
