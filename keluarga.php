@@ -238,7 +238,7 @@ session_start();
                     <?php echo "<td class='text-center'><a href='#edit_modal' class='btn btn-warning btn-show-modal-edit'  data-toggle='modal' data-id=".$view['id'].">Edit</a>"; ?>
                       <a class="btn btn-danger" data-toggle='modal' data-target='#konfirmasi_hapus' data-href="hapus_keluarga.php?id=<?php echo $view['id']; ?>">DELETE</a>
                       <a href="cek_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">CEK</a>
-                      <a href="hasil_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">Detail</a>
+                      <a href="hasil_detail.php?id=<?php  echo $view["id"]?>&nama=<?php echo $view["nama"]?>" class="btn btn-info btn-sm">Detail</a>
                     </td>
                   </tr>
                 <?php
@@ -276,7 +276,7 @@ session_start();
                     <?php echo "<td class='text-center'><a href='#edit_modal' class='btn btn-warning btn-show-modal-edit'  data-toggle='modal' data-id=".$view['id'].">Edit</a>"; ?>
                 
                       <a href="cek_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">CEK</a>
-                      <a href="hasil_detail.php?id=<?php  echo $view["id"]?>" class="btn btn-info btn-sm">Detail</a>
+                      <a href="hasil_detail.php?id=<?php  echo $view["id"]?>&nama=<?php echo $view["nama"]?>" class="btn btn-info btn-sm">Detail</a>
                     </td>
                   </tr>
                 <?php
