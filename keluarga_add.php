@@ -1,58 +1,44 @@
 <?php
+// start session
 session_start();
-    include 'koneksi.php';
-    
-    if (isset($_POST['add_data'])) 
-{
-        # code...
-    $nama = $_POST['nama'];
-    $umur = $_POST['umur'];
-    $gender = $_POST['gender'];
-    $uname  = $_POST['username'];
-    $pass = md5($_POST['password']);
-    $keluarga = 'keluarga';
 
-    $query_2 = "insert into user values('','$uname','$pass','$keluarga')";
-    // $query = "insert into keluarga values('','$nama','$umur','$gender')";
+// cb connection
+include 'koneksi.php';
     
-    $query_run2  = mysqli_query($connection, $query_2);
-    
-    
-    
-    if ($query_run2)
-     {
-         $created_by = $_SESSION['user_id'];
-         
-        $query_3 = mysqli_query($connection, "select * from user where username='$uname'");
-        $q=mysqli_fetch_array($query_3);
-        $user_id = $q['id'];
+if (isset($_POST['add_data'])){
 
-        $query = "insert into keluarga values('','$nama','$umur','$gender','$user_id','$created_by')";
+  // get request data
+  $nama = $_POST['nama'];
+  $umur = $_POST['umur'];
+  $gender = $_POST['gender'];
+  $uname  = $_POST['username'];
+  $pass = md5($_POST['password']);
+  $keluarga = 'keluarga';
+  $created_by = $_SESSION['user_id'];
 
-        // var_dump($q);
-        // die();
-        // # code...
-        // $_SESSION['status'] = "Data Berhasil Di Inputkan";
-        // header('location: keluarga.php');
-        $query_run  = mysqli_query($connection, $query);
+  // insert query
+  $query_run2  = mysqli_query($connection, "INSERT INTO user VALUES('','$uname','$pass','$keluarga', $created_by)");
 
-        if ($query_run)
-        {
-           # code...
-           $_SESSION['status'] = "Data Berhasil Di Inputkan";
-           header('location: keluarga.php');
-       }
-       else{
-           echo "Something went wrong";
-       }
+  // check if query successfully
+  if (mysqli_affected_rows($connection) > 0){
+    $query_3 = mysqli_query($connection, "SELECT * FROM user WHERE username = '$uname'");
+    $q = mysqli_fetch_array($query_3);
+    $user_id = $q['id'];
+    
+    // insert query again
+    $query_run  = mysqli_query($connection, "INSERT INTO keluarga VALUES('','$nama','$umur','$gender','$user_id','$created_by')");
+
+    // check if query successfully
+    if (mysqli_affected_rows($connection) > 0){
+      echo "<script>
+              alert('Data Berhasil di Inputkan!');
+              window.location.href = 'keluarga.php';
+            </script>";
+    }else{
+      echo mysqli_error($connection);
     }
-    else{
-        echo "Something went wrong";
-    }
-
-
-
-    
-}   
- 
+  }else{
+    echo mysqli_error($connection);
+  }
+}
 ?>
