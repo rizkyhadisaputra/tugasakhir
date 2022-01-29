@@ -2,7 +2,7 @@
 // start session
 session_start();
 
-// cb connection
+// cb conn
 include 'koneksi.php';
     
 if (isset($_POST['add_data'])){
@@ -17,28 +17,28 @@ if (isset($_POST['add_data'])){
   $created_by = $_SESSION['user_id'];
 
   // insert query
-  $query_run2  = mysqli_query($connection, "INSERT INTO user VALUES('','$uname','$pass','$keluarga', $created_by)");
+  $query_run2  = mysqli_query($conn, "INSERT INTO user VALUES('','$uname','$pass','$keluarga', $created_by)");
 
   // check if query successfully
-  if (mysqli_affected_rows($connection) > 0){
-    $query_3 = mysqli_query($connection, "SELECT * FROM user WHERE username = '$uname'");
+  if (mysqli_affected_rows($conn) > 0){
+    $query_3 = mysqli_query($conn, "SELECT * FROM user WHERE username = '$uname'");
     $q = mysqli_fetch_array($query_3);
     $user_id = $q['id'];
     
     // insert query again
-    $query_run  = mysqli_query($connection, "INSERT INTO keluarga VALUES('','$nama','$umur','$gender','$user_id','$created_by')");
+    $query_run  = mysqli_query($conn, "INSERT INTO keluarga VALUES('','$nama','$umur','$gender','$user_id','$created_by')");
 
     // check if query successfully
-    if (mysqli_affected_rows($connection) > 0){
+    if (mysqli_affected_rows($conn) > 0){
       echo "<script>
               alert('Data Berhasil di Inputkan!');
               window.location.href = 'keluarga.php';
             </script>";
     }else{
-      echo mysqli_error($connection);
+      echo mysqli_error($conn);
     }
   }else{
-    echo mysqli_error($connection);
+    echo mysqli_error($conn);
   }
 }
 ?>
