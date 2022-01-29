@@ -5,8 +5,8 @@ include 'koneksi.php';
 $username=$_POST['username'];
 $password=md5($_POST['password']);
 $query=mysqli_query($connection,"select * from user where username='$username' and password='$password'");
-$query=mysqli_query($connection,"select *,keluarga.created_by as created_by,user.created_by as created_by_user, user.id as id from user left JOIN keluarga on keluarga.id_user=user.id 
-where username='$username' and password='$password'");
+$query=mysqli_query($connection,"select *,keluarga.created_by as created_by,user.created_by 
+as created_by_user, user.id as id from user left JOIN keluarga on keluarga.id_user=user.id where username='$username' and password='$password'");
 $p=mysqli_fetch_array($query);
 
 //die();
