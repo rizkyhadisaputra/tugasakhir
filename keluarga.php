@@ -184,8 +184,7 @@ session_start();
                   $jumlah_data = mysqli_num_rows($data);
 				          $total_halaman = ceil($jumlah_data / $batas);
 
-                
-                $data_keluarga = mysqli_query($connection, "select * from keluarga  limit $halaman_awal, $batas");
+                $data_keluarga = mysqli_query($connection, "select * from keluarga limit $halaman_awal, $batas");
                 $no = $halaman_awal+1;
                 while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>
@@ -263,10 +262,12 @@ session_start();
                 $total_halaman = ceil($jumlah_data / $batas);
 
               
+                $userId = $_SESSION['user_id'];
+                $data_keluarga = mysqli_query($connection, "select * from keluarga where id_user = $userId limit $halaman_awal, $batas");
 
-              $data_keluarga = mysqli_query($connection, "select * from keluarga where created_by=$created_by limit $halaman_awal, $batas");
-              $no = $halaman_awal+1;
-              while ($view = mysqli_fetch_array($data_keluarga)) {
+                // $data_keluarga = mysqli_query($connection, "select * from keluarga where created_by=$created_by limit $halaman_awal, $batas");
+                $no = $halaman_awal+1;
+                while ($view = mysqli_fetch_array($data_keluarga)) {
                 ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
