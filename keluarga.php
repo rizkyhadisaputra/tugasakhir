@@ -99,6 +99,15 @@ session_start();
                         <option value="Perempuan">Perempuan</option>
                       </select>
                     </div>
+
+                    <div class="form-grop">
+                      <label> Role </label>
+                      <select class="form-control" name="role" aria-label="Default select example">
+                        <option selected>Pilih Role</option>
+                        <option value="admin">Admin </option>
+                        <option value="Keluarga">Keluarga</option>
+                      </select>
+                    </div>
                     
                     <div class="form-group">
                       <label>Username</label>

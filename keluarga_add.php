@@ -13,11 +13,11 @@ if (isset($_POST['add_data'])){
   $gender = $_POST['gender'];
   $uname  = $_POST['username'];
   $pass = md5($_POST['password']);
-  $keluarga = 'keluarga';
+  $role = $_POST['role'];
   $created_by = $_SESSION['user_id'];
 
   // insert query
-  $query_run2  = mysqli_query($conn, "INSERT INTO user VALUES('','$uname','$pass','$keluarga', $created_by)");
+  $query_run2  = mysqli_query($conn, "INSERT INTO user VALUES('','$uname','$pass','$role', $created_by)");
 
   // check if query successfully
   if (mysqli_affected_rows($conn) > 0){
